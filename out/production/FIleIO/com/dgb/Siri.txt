@@ -1,0 +1,13 @@
+Scanner scanner = new Scanner(System.in);
+        Map<String,String> map = new HashMap<>();
+        String key;
+        map.put("hello","hello ! i am siri.");
+        map.put("how are you?","I am fine and you?");
+        map.put("i am fine","Good to hear that");
+        map.put("exit","Bye");
+        do {
+            System.out.print("Input => ");
+            key=scanner.nextLine().toLowerCase();
+            System.out.print("Siri :");
+            System.out.println(map.get(key));
+        }while (key.equals("exit"));
