@@ -18,6 +18,12 @@ public class Constants {
     public final static String PRESS_KEY_ENTER=" Please press key \"Enter\" to continue";
     public final static String GOODBYE="Good bye";
 
+    public final static String INITIALIZE="initialized";
+
+    public static String SUCCESSFUL(String introduction){
+        return introduction + "successfully..!";
+    }
+
     public final static String INPUT_ID="Input ID -> ";
     public final static String INPUT_NUMBER="Input number of student -> ";
     public final static String INPUT_PAGE="Input Page -> ";

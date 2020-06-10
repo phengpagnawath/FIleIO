@@ -25,7 +25,6 @@ public class MainView {
         System.out.println(Constants.MENU_VIEW);
         System.out.print("Enter choice ->");
         int ch=Integer.parseInt(scanner.nextLine());
-        dataManager.retrieveData(students);
         switch (ch){
             case 1:{
                 int num=Utils.inputInteger(Constants.INPUT_NUMBER);
@@ -34,6 +33,8 @@ public class MainView {
                 break;
             }
             case 2:{
+                dataManager.commit(students);
+                students=dataManager.retrieveData(students);
                 for(Student student:students.getData())
                     System.out.println(student);
                 break;
@@ -65,7 +66,6 @@ public class MainView {
                 students.getData().remove(index);
                 for(Student student:students.getData())
                     System.out.println(student);
-                dataManager.commit(students);
                 break;
             }
             case 8:{
@@ -75,11 +75,17 @@ public class MainView {
                 students.getData().set(index,newStudent);
                 for(Student student:students.getData())
                     System.out.println(student);
-                dataManager.commit(students);
+                break;
+            }
+            case 9:{
+                int index= students.getData().size();
+                Student student = insertOneStudent(index+1);
+                students.getData().add(index+1,student);
                 break;
             }
             case 11:{
                 System.out.println(Constants.GOODBYE);
+                dataManager.commit(students);
                 System.exit(0);
             }
             default:{
@@ -92,6 +98,11 @@ public class MainView {
     }
 
     public Student updateStudent(int id){
+        String name=Utils.inputString(Constants.INPUT_NAME);
+        String gender=Utils.inputString(Constants.INPUT_GENDER);
+        return new Student(id,name,gender);
+    }
+    public Student insertOneStudent(int id){
         String name=Utils.inputString(Constants.INPUT_NAME);
         String gender=Utils.inputString(Constants.INPUT_GENDER);
         return new Student(id,name,gender);
